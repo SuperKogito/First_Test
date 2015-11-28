@@ -72,14 +72,12 @@ public class SchoolClassListFragment extends Fragment implements AbsListView.OnI
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        ArrayList<SchoolClass> sampleSchoolList= new ArrayList<>();
-        sampleSchoolList.add(new SchoolClass("Klasse 7a", "nervig", R.drawable.ic_menu_camera));
-        sampleSchoolList.add(new SchoolClass("Klasse 9d", "doof", R.drawable.ic_menu_gallery));
 
+/*
         // TODO: Change Adapter to display your content
         mAdapter = new SchoolClassListAdapter(getActivity(),
                 R.layout.schools_row,sampleSchoolList
-        );
+        );*/
     }
 
     @Override
@@ -88,11 +86,11 @@ public class SchoolClassListFragment extends Fragment implements AbsListView.OnI
         View view = inflater.inflate(R.layout.classes_list_fragment, container, false);
 
         // Set the adapter
-        mListView = (AbsListView) view.findViewById(R.id.schools_list);
-        ((AdapterView<ListAdapter>) mListView).setAdapter(mAdapter);
+       // mListView = (AbsListView) view.findViewById(R.id.schools_list);
+        //(AdapterView<ListAdapter>) mListView).setAdapter(mAdapter);
 
         // Set OnItemClickListener so we can be notified on item clicks
-        mListView.setOnItemClickListener(this);
+       // mListView.setOnItemClickListener(this);
 
         return view;
     }

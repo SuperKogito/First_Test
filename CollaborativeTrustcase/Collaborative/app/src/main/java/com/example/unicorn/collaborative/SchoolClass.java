@@ -9,10 +9,21 @@ public class SchoolClass {
     private String schoolClassName, schoolClassDescription;
     private int photoId;
 
-    public SchoolClass(String schoolClassName, String schoolClassDescription, int photoId) {
+    public String getSchoolClassId() {
+        return schoolClassId;
+    }
+
+    public void setSchoolClassId(String schoolClassId) {
+        this.schoolClassId = schoolClassId;
+    }
+
+    private String schoolClassId;
+
+    public SchoolClass(String schoolClassName, String schoolClassDescription, int photoId, String id) {
         this.schoolClassName = schoolClassName;
         this.schoolClassDescription = schoolClassDescription;
         this.photoId = photoId;
+        this.schoolClassId=id;
     }
 
     public String getSchoolClassName() {
