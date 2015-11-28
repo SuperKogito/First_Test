@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,7 +15,7 @@ import java.util.List;
  */
 public class SchoolClassListAdapter extends ArrayAdapter {
     private Context context;
-    private List schools;
+    private List classes;
 
     public SchoolClassListAdapter(Context context, int resource) {
 
@@ -28,7 +27,7 @@ public class SchoolClassListAdapter extends ArrayAdapter {
     public SchoolClassListAdapter(Context context, int resource, List objects) {
         super(context, resource, objects);
         this.context=context;
-        this.schools=objects;
+        this.classes =objects;
     }
 
     @Override
@@ -40,7 +39,7 @@ public class SchoolClassListAdapter extends ArrayAdapter {
 
 
         TextView schoolNameText = (TextView) convertView.findViewById(R.id.textView2);
-        SchoolClass school = (SchoolClass) schools.get(position);
+        SchoolClass school = (SchoolClass) classes.get(position);
 
         String schoolName=school.getSchoolClassName();
         schoolNameText.setText(schoolName);
