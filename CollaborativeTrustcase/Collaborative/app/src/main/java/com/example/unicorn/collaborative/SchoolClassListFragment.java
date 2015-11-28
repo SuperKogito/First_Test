@@ -11,7 +11,6 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.example.unicorn.collaborativetrustcase.dummy.DummyContent;
 
 import java.util.ArrayList;
 
@@ -24,7 +23,7 @@ import java.util.ArrayList;
  * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
  * interface.
  */
-public class SchoolListFragment extends Fragment implements AbsListView.OnItemClickListener {
+public class SchoolClassListFragment extends Fragment implements AbsListView.OnItemClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -52,12 +51,12 @@ public class SchoolListFragment extends Fragment implements AbsListView.OnItemCl
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public SchoolListFragment() {
+    public SchoolClassListFragment() {
     }
 
     // TODO: Rename and change types of parameters
-    public static SchoolListFragment newInstance(String param1, String param2) {
-        SchoolListFragment fragment = new SchoolListFragment();
+    public static SchoolClassListFragment newInstance(String param1, String param2) {
+        SchoolClassListFragment fragment = new SchoolClassListFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -74,18 +73,23 @@ public class SchoolListFragment extends Fragment implements AbsListView.OnItemCl
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+        ArrayList<SchoolClass> sampleSchoolList= new ArrayList<>();
+        sampleSchoolList.add(new SchoolClass("Klasse 7a", "nervig", R.drawable.ic_menu_camera));
+        sampleSchoolList.add(new SchoolClass("Klasse 9d", "doof", R.drawable.ic_menu_gallery));
+
         // TODO: Change Adapter to display your content
-        mAdapter = new SchoolListAdapter(getActivity(),
-                R.layout.schools_row,new ArrayList<School>());
+        mAdapter = new SchoolClassListAdapter(getActivity(),
+                R.layout.schools_row,sampleSchoolList
+        );
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_item, container, false);
+        View view = inflater.inflate(R.layout.schools_list_fragment, container, false);
 
         // Set the adapter
-        mListView = (AbsListView) view.findViewById(android.R.id.list);
+        mListView = (AbsListView) view.findViewById(R.id.schools_list);
         ((AdapterView<ListAdapter>) mListView).setAdapter(mAdapter);
 
         // Set OnItemClickListener so we can be notified on item clicks
@@ -117,11 +121,12 @@ public class SchoolListFragment extends Fragment implements AbsListView.OnItemCl
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        /*
         if (null != mListener) {
             // Notify the active callbacks interface (the activity, if the
             // fragment is attached to one) that an item has been selected.
             mListener.onFragmentInteraction(DummyContent.ITEMS.get(position).id);
-        }
+        }*/
     }
 
     /**
