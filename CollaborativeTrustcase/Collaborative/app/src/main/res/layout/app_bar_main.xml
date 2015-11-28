@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.unicorn.collaborative.MainActivity">
+    tools:context="com.example.unicorn.collaborativetrustcase.MainActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
