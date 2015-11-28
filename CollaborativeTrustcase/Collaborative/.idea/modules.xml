@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Collaborative.iml" filepath="$PROJECT_DIR$/Collaborative.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libs/kalium-jni/kalium-jni.iml" filepath="$PROJECT_DIR$/libs/kalium-jni/kalium-jni.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libs/trustcaselib/trustcaselib.iml" filepath="$PROJECT_DIR$/libs/trustcaselib/trustcaselib.iml" />
     </modules>
   </component>
 </project>

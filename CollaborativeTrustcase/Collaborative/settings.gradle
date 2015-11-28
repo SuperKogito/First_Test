@@ -1,1 +1,3 @@
-include ':app'
+include ':app', ':kalium-jni', ':trustcaselib'
+project(':kalium-jni').projectDir = new File('libs/kalium-jni')
+project(':trustcaselib').projectDir = new File('libs/trustcaselib')
