@@ -18,6 +18,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".DisplaySchoolClassesActivity">
+
+
+        </activity>
+
+        <activity android:name=".ParentsFeedbackClassActivity">
+
+
+        </activity>
     </application>
 
 </manifest>

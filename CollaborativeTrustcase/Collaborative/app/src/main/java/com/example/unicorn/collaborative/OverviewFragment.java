@@ -8,9 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
+import com.example.unicorn.collaborative.dummy.DummyContent;
 
 import java.util.ArrayList;
 
@@ -23,7 +25,7 @@ import java.util.ArrayList;
  * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
  * interface.
  */
-public class SchoolClassListFragment extends Fragment implements AbsListView.OnItemClickListener {
+public class OverviewFragment extends Fragment implements AbsListView.OnItemClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,6 +36,7 @@ public class SchoolClassListFragment extends Fragment implements AbsListView.OnI
     private String mParam1;
     private String mParam2;
 
+    private OnFragmentInteractionListener mListener;
 
     /**
      * The fragment's ListView/GridView.
@@ -50,12 +53,12 @@ public class SchoolClassListFragment extends Fragment implements AbsListView.OnI
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public SchoolClassListFragment() {
+    public OverviewFragment() {
     }
 
     // TODO: Rename and change types of parameters
-    public static SchoolClassListFragment newInstance(String param1, String param2) {
-        SchoolClassListFragment fragment = new SchoolClassListFragment();
+    public static OverviewFragment newInstance(String param1, String param2) {
+        OverviewFragment fragment = new OverviewFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -72,23 +75,23 @@ public class SchoolClassListFragment extends Fragment implements AbsListView.OnI
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        ArrayList<SchoolClass> sampleSchoolList= new ArrayList<>();
-        sampleSchoolList.add(new SchoolClass("Klasse 7a", "nervig", R.drawable.ic_menu_camera));
-        sampleSchoolList.add(new SchoolClass("Klasse 9d", "doof", R.drawable.ic_menu_gallery));
+        ArrayList items = new ArrayList();
+        items.add("Verfassen");
+        items.add("Nachverfolgen");
+
 
         // TODO: Change Adapter to display your content
-        mAdapter = new SchoolClassListAdapter(getActivity(),
-                R.layout.schools_row,sampleSchoolList
-        );
+        mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
+                android.R.layout.simple_list_item_1, android.R.id.text1, items);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.classes_list_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_item, container, false);
 
         // Set the adapter
-        mListView = (AbsListView) view.findViewById(R.id.schools_list);
+        mListView = (AbsListView) view.findViewById(android.R.id.list);
         ((AdapterView<ListAdapter>) mListView).setAdapter(mAdapter);
 
         // Set OnItemClickListener so we can be notified on item clicks
@@ -97,11 +100,22 @@ public class SchoolClassListFragment extends Fragment implements AbsListView.OnI
         return view;
     }
 
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            mListener = (OnFragmentInteractionListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
 
-
-
-
-
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class SchoolClassListAdapter extends ArrayAdapter {
     private Context context;
-    private ArrayList<SchoolClass> schools;
+    private List schools;
 
     public SchoolClassListAdapter(Context context, int resource) {
 
@@ -28,6 +28,7 @@ public class SchoolClassListAdapter extends ArrayAdapter {
     public SchoolClassListAdapter(Context context, int resource, List objects) {
         super(context, resource, objects);
         this.context=context;
+        this.schools=objects;
     }
 
     @Override
@@ -35,9 +36,11 @@ public class SchoolClassListAdapter extends ArrayAdapter {
 
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService
                 (Context.LAYOUT_INFLATER_SERVICE);
+        convertView = inflater.inflate(R.layout.schools_row, null);
 
-        TextView schoolNameText = (TextView) convertView.findViewById(R.id.textView);
-        SchoolClass school = schools.get(position);
+
+        TextView schoolNameText = (TextView) convertView.findViewById(R.id.textView2);
+        SchoolClass school = (SchoolClass) schools.get(position);
 
         String schoolName=school.getSchoolClassName();
         schoolNameText.setText(schoolName);
@@ -49,7 +52,6 @@ public class SchoolClassListAdapter extends ArrayAdapter {
 
 
 
-        convertView = inflater.inflate(R.layout.schools_row, null);
 
         return convertView;
     }

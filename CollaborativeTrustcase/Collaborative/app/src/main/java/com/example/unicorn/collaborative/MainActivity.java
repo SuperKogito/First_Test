@@ -1,5 +1,7 @@
 package com.example.unicorn.collaborative;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,9 +14,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private ArrayAdapter<String> mAdapter;
+    private AbsListView mListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +33,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        final Activity activity=this;
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -40,6 +52,47 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        ArrayList items = new ArrayList();
+        items.add("Verfassen");
+        items.add("Nachverfolgen");
+
+
+        // TODO: Change Adapter to display your content
+        mAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, android.R.id.text1, items);
+
+        mListView = (AbsListView) findViewById(R.id.overview_list);
+        ((AdapterView<ListAdapter>) mListView).setAdapter(mAdapter);
+
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (position==0)
+                {
+                    Intent intent = new Intent(activity, DisplaySchoolClassesActivity.class);
+
+                    startActivity(intent);
+
+
+
+                }
+                else if (position==1)
+                {
+
+
+
+                    Intent intent = new Intent(activity, ParentsFeedbackClassActivity.class);
+                    startActivity(intent);
+
+
+                }
+            }
+        });
+
+
     }
 
     @Override
@@ -73,6 +126,9 @@ public class MainActivity extends AppCompatActivity
 
         return super.onOptionsItemSelected(item);
     }
+
+
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
