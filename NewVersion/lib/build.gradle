@@ -1,0 +1,9 @@
+apply plugin: 'java'
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':trustcaselib')
+    compile project(':kalium-jni')
+    compile 'com.peircean.libgfapi-jni:libgfapi-jni:1.0.4'
+    compile 'org.abstractj.kalium:kalium:0.4.0'
+}
