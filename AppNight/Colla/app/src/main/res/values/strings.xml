@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Collaborative</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_Item">Item</string>
+    <string name="action_settings">Test</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Schreibe eine Nachricht!</string>
+</resources>
